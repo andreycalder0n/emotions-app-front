@@ -1,0 +1,9 @@
+{
+  "extends": ["eslint:recommended", "next", "prettier", "plugin:@next/next/recommended", "plugin:jsx-a11y/recommended", "plugin:prettier/recommended", "next/core-web-vitals", "next/babel"],
+  "rules": {
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off",
+    "semi": ["error", "always"],
+    "prettier/prettier": 0
+  }
+}

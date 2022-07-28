@@ -1,15 +1,22 @@
-import Header from '@components/Header';
-// import Nav from '@common/Nav';
+// import Header from '@components/Header';
+import Nav from '@common/Nav';
+import Footer from "@components/Footer";
+import TabNav from '@common/TabNav';
 
 export default function MainLayout({ children }) {
   return (
     <>
-      <div className="min-h-full">
-        <Header />
-        {/* <Nav /> */}
+      <div className='flex flex-col h-screen'>
+
+        <Nav />
+
         <main>
-          <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">{children}</div>
+          <div>{children}</div>
         </main>
+
+        <Footer />
+
+        <TabNav />
       </div>
     </>
   );

@@ -1,7 +1,8 @@
-import React, { useState, useContext, createContext } from 'react';
-import endPoints from '@services/api';
+import { useState, useContext, createContext } from 'react';
 import Cookie from 'js-cookie';
 import axios from 'axios';
+
+import endPoints from '@services/api';
 
 // container context
 const AuthContext = createContext();
@@ -12,10 +13,10 @@ export const useAuth = () => {
   return context;
 };
 
-// contexto de la aplicación
-function userProviderAuth() {
-  const [user, setUser] = useState(null);
+//propoga el contexto por la aplicación
+export const ProviderAuth = ({ children }) => {
 
+  // options requests
   const options = {
     headers: {
       accept: '*/*',
@@ -23,9 +24,13 @@ function userProviderAuth() {
     },
   };
 
+  // user
+  const [user, setUser] = useState(null);
+
+  // login
   const signIn = async (email, password) => {
 
-    // iniciar sesión
+    // request login
     const { data } = await axios.post(endPoints.auth.login, { email, password }, options);
 
     const token = data.token;
@@ -33,29 +38,25 @@ function userProviderAuth() {
     if (token) {
       Cookie.set('token', token, { expires: 5 });
 
-      // configura axios con valores default se carga el token con Bearer
+      // configure axios with default values load the token with Bearer
       axios.defaults.headers.Authorization = `Bearer ${token}`;
 
-      //! no se ha creado el endpoint de profile, no se requiere data contiene token y user
-      // solicito el usuario
+      //! profile endpoint not created, data not required contains token and user
+      // request the user
       // const { data: user } = await axios.get(endPoints.auth.profile);
 
-      // se agrega user al context
+      // add user to context
       const user = data.user
       setUser(user);
+      console.log(user);
+      return
     }
   };
 
-  return {
+  // component con el context
+  return <AuthContext.Provider value={{
     user,
     signIn
-  };
+  }}>{children}</AuthContext.Provider>;
 }
-
-//propoga el contexto por la aplicación
-export function ProviderAuth({ children }) {
-  const auth = userProviderAuth(); //utilizo el contexto
-  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
-}
-
 

@@ -8,11 +8,10 @@ const addThought = async (body) => {
       'Content-Type': 'application/json'
     },
   };
-
-  const response = await axios.post(endPoints.products.addThought, body, config);
+  console.log(body);
+  const response = await axios.post(endPoints.thoughts.addThought, body, config);
 
   return response.data;
 };
 
 export { addThought };
-

@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import Modal from '@common/Modal';
-import { PlusIcon, XCircleIcon } from '@heroicons/react/solid';
+import { PlusIcon } from '@heroicons/react/solid';
 import FormThought from '@components/FormThought';
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+
 
 export default function Dashboard() {
 
@@ -13,9 +11,9 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="lg:flex lg:items-center lg:justify-between mb-8">
+      <div className="flex items-center justify-between m-8">
         <div className="flex-1 min-w-0">
-          <h2 className="text-2xl leading-7 text-gray-900 sm:text-2xl sm:truncate">Vivir con propósito</h2>
+          <h2 className="text-2xl leading-7 text-gray-900 text-semibold sm:text-2xl sm:truncate">Vivir con propósito</h2>
         </div>
         <div className="mt-5 flex lg:mt-0 lg:ml-4">
           <span className="sm:ml-3">

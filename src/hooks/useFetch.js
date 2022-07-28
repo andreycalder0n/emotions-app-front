@@ -16,6 +16,7 @@ const useFetch = (url) => {
     try {
       fetchData();
     } catch (error) {
+      console.log('Error en fetch');
       console.log(error);
     }
   }, [url]);

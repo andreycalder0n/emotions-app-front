@@ -8,28 +8,29 @@ import router from 'next/router';
 export default function LoginPage() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
-  const auth = useAuth();
+  const { signIn } = useAuth();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // valores del formulario al presionar enviar
+    // form values when press to send
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
-    //podría llevar validaciones de formulario
+    //could take form validations
 
-    // function del contexto
-    auth
-      .signIn(email, password)
-      .then(() => {
-        console.log('Login success');
-        router.push('/thoughts');
-      })
-      .catch((error) => {
-        if (error.response?.status === 401) {
-          alert('Usuario o contraseña incorrectos');
-        }
-      });
+    // context function
+    (async () => {
+      await signIn(email, password)
+        .then(() => {
+          console.log('Login success');
+          router.push('/thoughts');
+        })
+        .catch((error) => {
+          if (error.response?.status === 401) {
+            alert('Usuario o contraseña incorrectos');
+          }
+        });
+    })();
   };
 
   return (

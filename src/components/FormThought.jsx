@@ -5,7 +5,7 @@ import { addThought } from '@services/api/thoughts';
 
 import useFetch from '@hooks/useFetch.js';
 import endPoints from '@services/api';
-import { useAuth } from '@hooks/useAuth';
+// import { useAuth } from '@hooks/useAuth';
 
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
@@ -13,12 +13,13 @@ import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
+
 export default function FormThought() {
   const emotions = useFetch(endPoints.emotions.getEmotions);
 
-  // referencia al formulario
+  // reference to form
   const formRef = useRef(null);
-  // manejo de rutas
+  // handle routes
   const router = useRouter();
 
   const [selected, setSelected] = useState([emotions]);
@@ -30,19 +31,17 @@ export default function FormThought() {
     control,
   } = useForm({});
 
-  console.log(errors);
-
   const onSubmit = () => {
     // obtener valor del formulario
     const formData = new FormData(formRef.current);
 
     // estructura though a guardar
     const data = {
-      title: formData.get('thought'),
-      emotion: selected.emotion,
+      thought: formData.get('thought'),
+      emotionId: selected.emotionId,
     };
     console.log(data);
-    // addThought(data)
+    addThought(data);
   };
 
   return (
