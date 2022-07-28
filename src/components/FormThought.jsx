@@ -20,7 +20,7 @@ export default function FormThought() {
   // reference to form
   const formRef = useRef(null);
   // handle routes
-  const router = useRouter();
+  // const router = useRouter();
 
   const [selected, setSelected] = useState([emotions]);
 
