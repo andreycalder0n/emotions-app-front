@@ -6,18 +6,18 @@
 import { useAuth } from '@hooks/useAuth';
 import endPoints from '@services/api';
 import axios from 'axios';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 function Emotions() {
-  const router = useRouter()
+  // const router = useRouter()
   const { user } = useAuth()
 
   // emotions
   const [emotions, setEmotions] = useState([])
 
   if (!user) {
-    router.push('/')
+    // router.push('/')
   }
 
   // get emociones

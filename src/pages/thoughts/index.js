@@ -3,19 +3,19 @@
 import { useAuth } from '@hooks/useAuth';
 import endPoints from '@services/api';
 import axios from 'axios';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 // import { useAuth } from '@hooks/useAuth';
 
 export default function Thoughts() {
-  const router = useRouter()
+  // const router = useRouter()
   const { user } = useAuth();
 
   // thoughts
   const [thoughts, setThoughts] = useState([])
 
   if (!user) {
-    router.push('/')
+    // router.push('/')
   }
 
   async function getThoughts() {
