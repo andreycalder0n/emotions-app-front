@@ -1,6 +1,6 @@
 import { Fragment, useRef, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { addThought } from '@services/api/thoughts';
 
 import useFetch from '@hooks/useFetch.js';
@@ -40,7 +40,7 @@ export default function FormThought() {
       thought: formData.get('thought'),
       emotionId: selected.emotionId,
     };
-    console.log(data);
+
     addThought(data);
   };
 

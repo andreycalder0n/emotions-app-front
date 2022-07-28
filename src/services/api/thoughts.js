@@ -8,7 +8,7 @@ const addThought = async (body) => {
       'Content-Type': 'application/json'
     },
   };
-  console.log(body);
+
   const response = await axios.post(endPoints.thoughts.addThought, body, config);
 
   return response.data;
