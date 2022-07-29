@@ -3,7 +3,7 @@ import { useDark } from '@context/ProviderDark';
 
 export default function Nav() {
   const navigations = [
-    { label: 'Dashboard', href: '/dashboard', current: true },
+    { label: 'Home', href: '/dashboard', current: true },
     { label: 'Emotions', href: '/emotions', current: false },
     { label: 'Thoughts', href: '/thoughts', current: false },
   ];
@@ -26,7 +26,7 @@ export default function Nav() {
               <Link href={nav.href}>
                 <a
                   className={classNames(
-                    nav.current ? 'bg-tertiary hover:bg-secondary dark:bg-gray-900 dark:hover:bg-gray-700 text-white font-semibold' : 'text-white hover:bg-secondary dark:hover:bg-gray-900',
+                    nav.current ? 'bg-secondary hover:bg-tertiary dark:bg-gray-900 dark:hover:bg-gray-700 text-white font-semibold' : 'text-white hover:bg-secondary dark:hover:bg-gray-900',
                     'px-3 py-2 rounded-md text-sm font-medium'
                   )}
                   aria-current={nav.current ? 'page' : undefined}

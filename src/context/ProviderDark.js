@@ -29,7 +29,7 @@ export const ProviderDark = ({ children }) => {
 
     if (currentTheme === 'dark') {
       return (
-        <Button className="bg-tertiary dark:hover:bg-gray-700 dark:bg-gray-900 rounded-md p-2 hover:bg-secondary hover:ring-transparent" onClick={() => setTheme('light')}>
+        <Button className="bg-secondary dark:hover:bg-gray-700 dark:bg-gray-900 rounded-md p-2 hover:bg-tertiary hover:ring-transparent" onClick={() => setTheme('light')}>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
           </svg>
@@ -37,7 +37,7 @@ export const ProviderDark = ({ children }) => {
       );
     } else {
       return (
-        <Button className="bg-tertiary dark:bg-gray-700 dark:hover:bg-gray-900 rounded-md p-2 hover:bg-secondary hover:ring-transparent" onClick={() => setTheme('dark')}>
+        <Button className="bg-secondary dark:bg-gray-700 dark:hover:bg-gray-900 rounded-md p-2 hover:bg-tertiary hover:ring-transparent" onClick={() => setTheme('dark')}>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path
               fillRule="evenodd"

@@ -36,7 +36,7 @@ export const ProviderAuth = ({ children }) => {
     const token = data.token;
 
     if (token) {
-      Cookie.set('token', token, { expires: 5 });
+      Cookie.set('token', token, { expires: 15 });
 
       // configure axios with default values load the token with Bearer
       axios.defaults.headers.Authorization = `Bearer ${token}`;
@@ -48,7 +48,6 @@ export const ProviderAuth = ({ children }) => {
       // add user to context
       const user = data.user
       setUser(user);
-      console.log(user);
       return
     }
   };

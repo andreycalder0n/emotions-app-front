@@ -6,6 +6,7 @@ import axios from 'axios';
 // import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 // import { useAuth } from '@hooks/useAuth';
+import ThoughtCard from '@components/ThoughtCard';
 
 export default function Thoughts() {
   // const router = useRouter()
@@ -35,17 +36,13 @@ export default function Thoughts() {
 
   return (
     <>
-      <div className='max-w-7xl mx-auto flex flex-col items-center'>
-        <p>Ruta inicial donde se listaran todos los thoughts</p>
+      <div className='max-w-7xl mx-auto flex flex-col items-center gap-3 px-2'>
+        <div className="flex justify-start p-2 text-bold text-lg w-full pt-4"><h1>Diario de emociones</h1></div>
 
         {
-          thoughts.map((thought) => {
-            return (
-              <div key={`thought-${thought.thoughtId}`}>
-                <h1  >{thought.thought}</h1>
-              </div>
-            )
-          })
+          thoughts.map((thought) => (
+            <ThoughtCard thought={thought} key={`Thought-${thought.thoughtId}`} />
+          ))
         }
       </div>
     </>
