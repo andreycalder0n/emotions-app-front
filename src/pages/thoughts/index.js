@@ -3,7 +3,6 @@
 import { useAuth } from '@hooks/useAuth';
 import endPoints from '@services/api';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import ThoughtCard from '@components/ThoughtCard';
 
@@ -12,7 +11,6 @@ import { PlusIcon } from '@heroicons/react/solid';
 import FormThought from '@components/FormThought';
 
 export default function Thoughts() {
-  const router = useRouter()
   const { user } = useAuth();
 
   const [open, setOpen] = useState(false);

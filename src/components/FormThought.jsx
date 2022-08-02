@@ -1,6 +1,6 @@
 import { Fragment, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useForm, Controller, set } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 
 import { addThought } from '@services/api/thoughts';
 import useFetch from '@hooks/useFetch.js';
