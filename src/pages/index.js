@@ -33,7 +33,7 @@ export default function Home() {
                       <a
                         className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-tertiary hover:bg-primary dark:bg-gray-900 dark:hover:bg-gray-800 md:py-4 md:text-lg md:px-10"
                       >
-                        Get started
+                        Sign In
                       </a>
                     </Link>
                   </div>
@@ -42,7 +42,7 @@ export default function Home() {
                       <a
                         className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-gray-200 hover:bg-gray-300 md:py-4 md:text-lg md:px-10"
                       >
-                        Live demo
+                        Register
                       </a>
                     </Link>
                   </div>

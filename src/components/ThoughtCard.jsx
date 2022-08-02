@@ -1,8 +1,9 @@
 // import { usePosts } from '@context/postContext';
 // import { useRouter } from 'next/router';
 // import toast from 'react-hot-toast';
+import moment from 'moment';
 
-export default function PostCard({ thought }) {
+export default function ThoughtCard({ thought }) {
   // const router = useRouter();
 
   // const { deletePost } = usePosts();
@@ -45,6 +46,8 @@ export default function PostCard({ thought }) {
   //   );
   // };
 
+  let date = moment(`${thought.createAt}`).local('es').format('LLL');
+
   return (
     <>
       <div
@@ -53,9 +56,9 @@ export default function PostCard({ thought }) {
         //   router.push(`/posts/edit/${post.postId}`);
         // }}
       >
-        <div className="px-4 py-7">
-          <div className="flex justify-between">
-            <h3>Me hace sentir {thought?.emotion.emotion}</h3>
+        <div className="px-4 py-5 pt-4">
+          <div className="flex justify-between pb-3 items-center">
+            <h3 className="text-base ">Me hace sentir {thought?.emotion.emotion}</h3>
             <button
               className="bg-red-600 hover:bg-red-500 text-sm px-2 py-1 rounded-sm"
               // onClick={(e) => {
@@ -66,7 +69,10 @@ export default function PostCard({ thought }) {
               Borrar
             </button>
           </div>
-          <p>{thought?.thought}</p>
+          <p className="text-sm pb-3">{thought?.thought}</p>
+          <div className="w-full justify-end text-right">
+            <p className="text-xs items-center">{date}</p>
+          </div>
         </div>
 
         {/* {post.image && <img src={post.image.url} className="w-full h-96 object-cover" alt={post.post} />} */}

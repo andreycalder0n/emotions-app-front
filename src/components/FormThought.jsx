@@ -1,8 +1,8 @@
 import { Fragment, useRef, useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
-// import { useRouter } from 'next/router';
-import { addThought } from '@services/api/thoughts';
+import { useRouter } from 'next/router';
+import { useForm, Controller, set } from 'react-hook-form';
 
+import { addThought } from '@services/api/thoughts';
 import useFetch from '@hooks/useFetch.js';
 import endPoints from '@services/api';
 // import { useAuth } from '@hooks/useAuth';
@@ -20,7 +20,7 @@ export default function FormThought() {
   // reference to form
   const formRef = useRef(null);
   // handle routes
-  // const router = useRouter();
+  const router = useRouter();
 
   const [selected, setSelected] = useState([emotions]);
 
@@ -42,6 +42,7 @@ export default function FormThought() {
     };
 
     addThought(data);
+    router.push('/dashboard');
   };
 
   return (
@@ -128,7 +129,7 @@ export default function FormThought() {
                 </div>
 
                 <div>
-                  <p className="mt-2 text-sm text-gray-500">Brief description for your profile. URLs are hyperlinked.</p>
+                  <p className="mt-2 text-sm text-gray-500">Nadie te hace sentir enojado, nadie te hace sentir nada.</p>
                 </div>
               </div>
               <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
