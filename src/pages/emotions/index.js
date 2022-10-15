@@ -4,7 +4,7 @@
 // import authenticatedRoute from '@components/AuthenticatesRoute'
 
 import { useAuth } from '@hooks/useAuth';
-import endPoints from '@services/api';
+import endPoints from '@services/api/endPoints';
 import axios from 'axios';
 // import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';

@@ -1,13 +1,12 @@
-import { useContext, createContext } from 'react'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext, createContext } from 'react'
 import { useTheme } from 'next-themes';
 import Button from '@common/Button';
 
-const DarkContext = createContext()
+const DarkContext = createContext();
 
 export const useDark = () => {
   const context = useContext(DarkContext)
-  return context
+  return context;
 }
 
 export const ProviderDark = ({ children }) => {

@@ -3,6 +3,7 @@
     "baseUrl": "src",
     "paths": {
       "@common/*": ["common/*"],
+      "@containers/*": ["containers/*"],
       "@components/*": ["components/*"],
       "@hooks/*": ["hooks/*"],
       "@layout/*": ["layout/*"],

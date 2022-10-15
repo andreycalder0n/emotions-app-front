@@ -1,70 +1,65 @@
-// import useFetch from '@hooks/useFetch.js';
-// import PrivateRoute from '@components/AuthenticatedRoute';
-import { useAuth } from '@hooks/useAuth';
-import endPoints from '@services/api';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import ThoughtCard from '@components/ThoughtCard';
+
+import { useState } from 'react';
+import { useThoughts } from '@context/ProviderThought';
 
 import Modal from '@common/Modal';
-import { PlusIcon } from '@heroicons/react/solid';
 import FormThought from '@components/FormThought';
+import CardThought from '@components/CardThought';
 
 export default function Thoughts() {
-  const { user } = useAuth();
-
+  // modal form thought
   const [open, setOpen] = useState(false);
 
+  // const { user } = useAuth();
+
   // thoughts
-  const [thoughts, setThoughts] = useState([])
+  const { thoughts, getThoughts } = useThoughts();
 
-  if (!user) {
-    // router.push('/')
-  }
-
-  async function getThoughts() {
-    const response = await axios.get(endPoints.thoughts.getThoughts)
-
-    setThoughts(response.data)
-    // router.push('/thoughts')
-  }
-
-  try {
-    useEffect(() => {
-      getThoughts();
-    }, [])
-  } catch (error) {
-    console.log('Error in thoughts');
-    // console.log(error);
-  }
+  const titleModal = 'Thought'
 
   return (
     <>
-      <div className='max-w-7xl mx-auto flex flex-col items-center gap-3 px-2'>
-        <div className="flex justify-between p-2 text-bold text-xl w-full pt-4"><h1>Diario de emociones</h1>
-          <div className=" flex lg:mt-0 lg:ml-4">
-            <span className="sm:ml-3">
-              <button
-                type="button"
-                className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                onClick={() => setOpen(true)}
-              >
-                <PlusIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-                Nuevo
-              </button>
-            </span>
-          </div>
-        </div>
+      <div className="max-w-7xl mx-auto flex flex-col items-center gap-3 px-2">
+        <header className='flex justify-between p-2 text-bold text-xl w-full pt-4 items-center'>
+          <h1 className='Title'>Diario de emociones</h1>
 
+          <div className="flex items-end justify-end flex-row">
+            <button
+              type="button"
+              className="px-3 py-2 bg-primary hover:bg-secondary text-white rounded-md ml-2"
+              onClick={() => {
+
+                getThoughts()
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+              </svg>
+            </button>
+
+            <button
+              type="button"
+              className="px-3 py-2 bg-primary hover:bg-secondary text-white rounded-md ml-2"
+              onClick={() => setOpen(true)}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        {/* thoughts list */}
         {
-          thoughts.map((thought) => (
-            <ThoughtCard thought={thought} key={`Thought-${thought.thoughtId}`} />
+          thoughts?.map((thought) => (
+            <CardThought thought={thought} key={`Thought-${thought.thoughtId}`} />
           ))
         }
       </div>
 
-      <Modal open={open} setOpen={setOpen}>
-        <FormThought></FormThought>
+      {/* thought form */}
+      <Modal open={open} setOpen={setOpen} title={titleModal}>
+        <FormThought setOpen={setOpen} />
       </Modal>
     </>
   );
