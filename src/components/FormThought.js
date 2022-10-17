@@ -29,7 +29,7 @@ export default function FormThought({ setOpen }) {
 
   // router
   const router = useRouter();
-  if (!router.isReady) return;
+
   const params = router.query;
 
   useEffect(() => {
