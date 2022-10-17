@@ -24,7 +24,6 @@ export default function FormThought({ setOpen }) {
     emotionId: '',
     createAt: dayjs(new Date).format('YYYY-MM-DD'),
     hora: dayjs(new Date).format('HH:mm:ss')
-
   });
 
   // router
@@ -42,19 +41,6 @@ export default function FormThought({ setOpen }) {
     }
   }, []
   )
-
-  // component title modal
-  // const HeaderForm = (id) => {
-  //   if (id) {
-  //     return (
-  //       <header className='flex justify-between items-center py-4 text-white'>
-  //         <h3 className='text-xl'>Thought</h3>
-
-  //         <Link href={'/thoughts'} className='text-gray-400 text-sm hover:text-gray-400'>Atrás</Link>
-  //       </header>
-  //     )
-  //   }
-  // }
 
   // component error
   const pError = (name) => {
@@ -81,8 +67,6 @@ export default function FormThought({ setOpen }) {
     <>
       <div className="flex items-center justify-center">
         <div className="bg-white p-3 pt-0 w-full">
-
-          {/* {HeaderForm(params?.id)} */}
 
           <Formik
             initialValues={thought}

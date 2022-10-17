@@ -32,7 +32,7 @@ export const ProviderThought = ({ children }) => {
   // add thought
   const addThought = async (thought) => {
 
-    let createAt = dayjs(`${thought.createAt} ${thought.hora}`).format('YYYY-MM-DDTHH:mm:ss');
+    let createAt = dayjs(`${thought.createAt} ${thought.hora}`).format('YYYY-MM-DDTHH:mm:ssZ');
 
     delete thought.hora
 
@@ -72,7 +72,7 @@ export const ProviderThought = ({ children }) => {
   }
 
   const updateThought = async (thoughtId, changes) => {
-    let createAt = dayjs(`${changes.createAt} ${changes.hora}`).format('YYYY-MM-DDTHH:mm:ss');
+    let createAt = dayjs(`${changes.createAt} ${changes.hora}`).format('YYYY-MM-DDTHH:mm:ssZ');
 
     delete changes.hora
 
