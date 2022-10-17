@@ -1,4 +1,4 @@
 {
-  "extends": ["next/babel", "next", "prettier"],
+  "extends": ["next", "prettier"],
   "plugins": ["prettier"]
 }

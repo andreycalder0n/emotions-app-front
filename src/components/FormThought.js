@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Link } from 'next/link'
-import { useThoughts } from '@context/ProviderThought'
-import { Formik, Form, Field, ErrorMessage, Datetime } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { StopIcon } from '@heroicons/react/outline'
 import * as Yup from "yup";
+import dayjs from 'dayjs'
 
+import { useThoughts } from '@context/ProviderThought'
 import useFetch from '@hooks/useFetch.js';
 import endPoints from '@services/api/endPoints.js';
 
@@ -21,8 +22,9 @@ export default function FormThought({ setOpen }) {
   const [thought, setThought] = useState({
     thought: '',
     emotionId: '',
-    createAt: '',
-    hora: ''
+    createAt: dayjs(new Date).format('YYYY-MM-DD'),
+    hora: dayjs(new Date).format('HH:mm:ss')
+
   });
 
   // router
@@ -38,21 +40,21 @@ export default function FormThought({ setOpen }) {
         setThought(data)
       })();
     }
-  }, [params.id]
+  }, []
   )
 
   // component title modal
-  const HeaderForm = (id) => {
-    if (id) {
-      return (
-        <header className='flex justify-between items-center py-4 text-white'>
-          <h3 className='text-xl'>Thought</h3>
+  // const HeaderForm = (id) => {
+  //   if (id) {
+  //     return (
+  //       <header className='flex justify-between items-center py-4 text-white'>
+  //         <h3 className='text-xl'>Thought</h3>
 
-          <Link href={'/thoughts'} className='text-gray-400 text-sm hover:text-gray-400'>Atrás</Link>
-        </header>
-      )
-    }
-  }
+  //         <Link href={'/thoughts'} className='text-gray-400 text-sm hover:text-gray-400'>Atrás</Link>
+  //       </header>
+  //     )
+  //   }
+  // }
 
   // component error
   const pError = (name) => {

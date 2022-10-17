@@ -23,7 +23,7 @@ export default function LoginPage() {
       await signIn(email, password)
         .then(() => {
           console.log('Login success');
-          router.push('/dashboard');
+          router.push('/thoughts'); //! cambiar a dashboard
         })
         .catch((error) => {
           if (error.response?.status === 401) {

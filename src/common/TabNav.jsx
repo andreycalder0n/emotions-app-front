@@ -1,12 +1,19 @@
-import Link from 'next/link';
-import { useDark } from '@context/ProviderDark';
+import Link from "next/link";
+import { useDark } from "@context/ProviderDark";
 
 export default function TabNav() {
   const { renderThemeChanger } = useDark();
   return (
     <div className="w-full h-16 bg-primary fixed left-0 bottom-0 shadow-md flex space-x-8 items-center justify-center md:hidden dark:bg-gray-800 ">
-      <Link href="/">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <Link href="/login">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -17,7 +24,12 @@ export default function TabNav() {
       </Link>
 
       <Link href="/thoughts">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5 text-white"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
           <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
           <path
             fillRule="evenodd"
@@ -30,15 +42,35 @@ export default function TabNav() {
         </svg> */}
       </Link>
       <Link href="/emotions">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6 text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+          />
         </svg>
       </Link>
 
       {renderThemeChanger()}
 
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-5 w-5 text-white"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fillRule="evenodd"
+          d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+          clipRule="evenodd"
+        />
       </svg>
     </div>
   );
