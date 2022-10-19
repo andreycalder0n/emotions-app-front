@@ -4,7 +4,7 @@ import { ThemeProvider } from 'next-themes';
 import { ProviderDark } from '@context/ProviderDark';
 import { Toaster } from 'react-hot-toast';
 import { ProviderThought } from '@context/ProviderThought'
-import MainLayout from '@layout/MainLayout.js';
+
 // import Script from 'next/script';
 import '@styles/tailwind.css';
 
@@ -22,9 +22,9 @@ function MyApp({ Component, pageProps }) {
           <ProviderDark>
 
             <ProviderThought>
-              <MainLayout>
-                <Component {...pageProps} />
-              </MainLayout>
+
+              <Component {...pageProps} />
+
               <Toaster />
             </ProviderThought>
 

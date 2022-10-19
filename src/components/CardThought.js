@@ -38,13 +38,8 @@ export default function ThoughtCard({ thought }) {
 
   }
 
-  // const handleUpdate = () => {
-  //   console.log('llama  a la api');
-  //   getThought()
-  // }
-
   // format date DD/MM/YYYY
-  let date = dayjs(thought.createAt).format('DD/MM/YYYY');
+  let date = dayjs(thought.createAt).format('DD/MM/YY HH:mm');
 
   return (
     <>

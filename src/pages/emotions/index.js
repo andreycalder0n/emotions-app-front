@@ -3,11 +3,13 @@
 // import endPoints from '@services/api';
 // import authenticatedRoute from '@components/AuthenticatesRoute'
 
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 import { useAuth } from '@hooks/useAuth';
 import endPoints from '@services/api/endPoints';
-import axios from 'axios';
 // import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import MainLayout from '@layout/MainLayout.js';
 
 function Emotions() {
   // const router = useRouter()
@@ -27,31 +29,27 @@ function Emotions() {
     setEmotions(response.data)
   }
 
-  try {
-    useEffect(() => {
-      getEmotions();
-    }, [])
-  } catch (error) {
-    console.log('Error in emotions');
-    // console.log(error);
-    throw error;
-  }
+  useEffect(() => {
+    getEmotions();
+  }, [])
 
   return (
     <>
-      <div className="max-w-7xl mx-auto flex flex-col items-center">
-        <h1>Ruta inicial donde se mostraran todas la emociones</h1>
+      <MainLayout>
+        <div className="max-w-7xl mx-auto flex flex-col items-center">
+          <h1>Ruta inicial donde se mostraran todas la emociones</h1>
 
-        {
-          emotions.map((emotion) => {
-            return (
-              <div key={`emotion-${emotion.emotionId}`}>
-                <h1  >{emotion.emotion}</h1>
-              </div>
-            )
-          })
-        }
-      </div>
+          {
+            emotions.map((emotion) => {
+              return (
+                <div key={`emotion-${emotion.emotionId}`}>
+                  <h1  >{emotion.emotion}</h1>
+                </div>
+              )
+            })
+          }
+        </div>
+      </MainLayout>
     </>
   );
 }

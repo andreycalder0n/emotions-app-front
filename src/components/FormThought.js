@@ -57,7 +57,9 @@ export default function FormThought({ setOpen }) {
           {
             params.id ? (<option value={emotions.emotionId}>{emotions.emotion}</option>) : <option>Selecciona una emoción</option>
           }
-          {data.map((item) => (<option value={item.emotionId} key={`emotion-${item.emotionId}`}>{item.emotion}</option>))}
+          {
+            data.map((item) => (<option value={item.emotionId} key={`emotion-${item.emotionId}`}>{item.emotion}</option>))
+          }
         </Field>
       </div>
     )
@@ -164,5 +166,5 @@ export default function FormThought({ setOpen }) {
         </div>
       </div>
     </>
-  );
+  )
 }
