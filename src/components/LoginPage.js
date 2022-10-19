@@ -35,7 +35,9 @@ export default function LoginPage() {
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-[65%]">
+      <div className="flex items-center justify-center" style=
+        {{ minHeight: 65 + 'vh' }}
+      >
         <div className="bg-white p-3 pt-0 w-full">
 
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Iniciar sesión</h2>
