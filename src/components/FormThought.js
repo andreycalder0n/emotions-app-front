@@ -42,6 +42,20 @@ export default function FormThought({ setOpen }) {
   }, []
   )
 
+  const HeaderForm = (id) => {
+
+    return (
+      <header className='flex justify-between items-center py-4 text-white'>
+        <h3 className='text-xl'>Thought edit</h3>
+
+        <p className='text-sm block font-bold text-primary pt-2 pb-1 mr-3' onClick={() => {
+          router.push('/thoughts')
+        }}>Atrás</p>
+      </header>
+    )
+
+  }
+
   // component error
   const pError = (name) => {
     return (
@@ -69,7 +83,7 @@ export default function FormThought({ setOpen }) {
     <>
       <div className="flex items-center justify-center">
         <div className="bg-white p-3 pt-0 w-full">
-
+          {params.id ? HeaderForm(params.id) : ""}
           <Formik
             initialValues={thought}
 
