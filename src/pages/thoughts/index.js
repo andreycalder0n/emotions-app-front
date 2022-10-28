@@ -23,12 +23,12 @@ export default function Thoughts() {
           <header className='flex justify-between p-2 text-bold text-xl w-full pt-4 items-center'>
             <h1 className='Title'>Diario de emociones</h1>
 
+            <p>{thoughts.length}</p>
             <div className="flex items-end justify-end flex-row">
               <button
                 type="button"
                 className="px-3 py-2 bg-primary hover:bg-secondary text-white rounded-md ml-2"
                 onClick={() => {
-
                   getThoughts()
                 }}
               >
@@ -48,7 +48,6 @@ export default function Thoughts() {
               </button>
             </div>
           </header>
-
           {/* thoughts list */}
           {
             thoughts?.map((thought) => (

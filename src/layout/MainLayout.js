@@ -8,12 +8,12 @@ export default function MainLayout({ children }) {
     <>
       <div className='flex flex-col h-screen justify-between pb-18'>
 
-        <TabNav />
+        <Nav />
         <main>
           <div>{children}</div>
         </main>
-        <Nav />
         <Footer />
+        <TabNav />
 
 
       </div>

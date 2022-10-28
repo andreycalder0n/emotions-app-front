@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Link } from 'next/link'
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { StopIcon } from '@heroicons/react/outline'
 import * as Yup from "yup";
@@ -42,13 +41,13 @@ export default function FormThought({ setOpen }) {
   }, []
   )
 
-  const HeaderForm = (id) => {
+  const HeaderForm = () => {
 
     return (
-      <header className='flex justify-between items-center py-4 text-white'>
+      <header className='flex justify-between items-center py-4 font-bold text-primary'>
         <h3 className='text-xl'>Thought edit</h3>
 
-        <p className='text-sm block font-bold text-primary pt-2 pb-1 mr-3' onClick={() => {
+        <p className='text-sm block  pt-2 pb-1 mr-3' onClick={() => {
           router.push('/thoughts')
         }}>Atrás</p>
       </header>
@@ -83,7 +82,7 @@ export default function FormThought({ setOpen }) {
     <>
       <div className="flex items-center justify-center">
         <div className="bg-white p-3 pt-0 w-full">
-          {params.id ? HeaderForm(params.id) : ""}
+          {params.id ? HeaderForm() : ""}
           <Formik
             initialValues={thought}
 

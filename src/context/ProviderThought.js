@@ -13,6 +13,22 @@ export const useThoughts = () => {
 
 // propoagate thought context
 export const ProviderThought = ({ children }) => {
+  const addMonthNumberToThought = (thoughts) => {
+
+    let thoughtWithMonth = thoughts.map((thought) => {
+
+      let monthToAdd = new Date(thought.createAt)
+
+      return {
+        ...thought,
+        month: monthToAdd.getMonth(),
+      }
+    })
+
+    return thoughtWithMonth
+  }
+
+
   // thought context
   // thoughts
   const [thoughts, setThoughts] = useState([])
@@ -21,13 +37,8 @@ export const ProviderThought = ({ children }) => {
   const getThoughts = async () => {
     const response = await getThoughtsRequest()
 
-    setThoughts(response.data);
+    setThoughts(addMonthNumberToThought(response.data));
   }
-
-  // onload page
-  // useEffect(() => {
-  //   getThoughts();
-  // }, [])
 
   // add thought
   const addThought = async (thought) => {
