@@ -6,21 +6,17 @@ import Modal from '@common/Modal';
 import { PlusIcon } from '@heroicons/react/solid';
 import FormThought from '@components/FormThought';
 import MainLayout from '@layout/MainLayout.js';
+import CardThought from '@components/CardThought';
 
 import { Chart } from '@common/Chart'
 import { useEffect } from 'react';
 
 export default function Dashboard() {
-  const router = useRouter();
-
-  // modal form thought
-  const [open, setOpen] = useState(false);
-  const titleModal = 'Thought'
 
   const [titleGraphic, setTitleGraphic] = useState('Todas las emociones')
 
   // thoughts
-  const { thoughts, getThoughts, setThoughts } = useThoughts();
+  const { thoughts } = useThoughts();
 
   // thoughtsFilter
   const [thoughtsFilter, setThoughtsFilter] = useState([])
@@ -77,11 +73,27 @@ export default function Dashboard() {
 
   ];
 
+  // Cuenta concurrencia de un arreglo
+  const countOcurrences = (arr) => arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {})
+
   // onload page
   useEffect(() => {
     setThoughtsFilter(thoughts)
   }, [])
 
+  const handleEmotion = (emotionName) => {
+    if (emotionName === 'Todas') {
+      setThoughtsFilter(thoughts)
+    }
+    else {
+      let thoughtsForEmotion = thoughtsFilter.filter(thought => {
+
+        return thought.emotion.emotion === emotionName;
+      })
+
+      setThoughtsFilter(thoughtsForEmotion);
+    }
+  }
 
   const handleMonth = (monthNumber) => {
     if (monthNumber === 12) {
@@ -91,14 +103,20 @@ export default function Dashboard() {
     else {
       setTitleGraphic(months[monthNumber].name)
       let thoughtsForMonth = thoughtsFilter.filter(thought => {
+
         return thought.month === monthNumber
       })
+
       setThoughtsFilter(thoughtsForMonth)
     }
   }
 
-  // Cuenta concurrencia de un arreglo
-  const countOcurrences = (arr) => arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {})
+  const emotions = thoughtsFilter.map((emotion) => {
+    return emotion.emotion
+  })
+
+  const emotionsUniqueByKey = [...new Map(emotions.map(item =>
+    [item['emotionId'], item])).values()];
 
   const emotionName = thoughtsFilter.map((thought) => thought.emotion.emotion) // separa emotion
 
@@ -116,7 +134,7 @@ export default function Dashboard() {
   }
 
   // component select
-  const selectInputMonth = () => {
+  const selectFilterMonth = () => {
     return (
       <div className="w-full">
         <select name='mountName' className="focus:outline-none rounded text-primary w-full border-solid border-2 border-sky-900" onChange={(e) => {
@@ -133,20 +151,41 @@ export default function Dashboard() {
     )
   }
 
+  // component select
+  const selectFilterEmotion = () => {
+    return (
+      <div className="w-full">
+        <select name='emotionName' className="focus:outline-none rounded text-primary w-full border-solid border-2 border-sky-900" onChange={(e) => {
+          handleEmotion(e.target.value)
+        }}>
+          {
+            <option value='Todas'>Todas</option>
+          }
+          {
+            emotionsUniqueByKey.map((emotion) => (<option value={emotion.emotion} key={`emotion-${emotion.emotionId}`} >{emotion.emotion}</option>))
+          }
+        </select>
+      </div>
+    )
+  }
+
   return (
     <>
       <MainLayout>
 
+        <div className="flex justify-between items-center p-2">
+          <h2 className="flex-auto w-full text-2xl leading-7 text-gray-900 text-semibold sm:text-2xl sm:truncate">Vivir con propósito</h2>
+          <h3 className='flex-auto w-1/3'>Thoughts {thoughtsFilter.length}</h3>
+        </div>
         <div className="flex items-center justify-between m-3">
 
           <div className="flex-1 min-w-0">
-            <h2 className="text-2xl leading-7 text-gray-900 text-semibold sm:text-2xl sm:truncate">Vivir con propósito</h2>
-            <h3>{thoughtsFilter.length}</h3>
+            <h2 className="text-2xl leading-7 text-gray-900 text-semibold sm:text-2xl sm:truncate">Meses</h2>
           </div>
 
           <div className="flex justify-between">
 
-            {selectInputMonth()}
+            {selectFilterMonth()}
 
           </div>
 
@@ -154,11 +193,28 @@ export default function Dashboard() {
 
         <Chart chartData={data} />
 
-        {/* thought form */}
-        <Modal open={open} setOpen={setOpen} title={titleModal}>
-          <FormThought setOpen={setOpen}></FormThought>
-        </Modal>
+        <div className="flex items-center justify-between m-3">
 
+          <div className="flex-1 min-w-0">
+            <h2 className="text-2xl leading-7 text-gray-900 text-semibold sm:text-2xl sm:truncate">Emociones</h2>
+          </div>
+
+          <div className="flex justify-between">
+
+            {selectFilterEmotion()}
+
+          </div>
+
+        </div>
+
+        <div className='max-w-7xl mx-auto flex flex-col items-center gap-3 px-2'>
+
+          {
+            thoughtsFilter?.map((thought) => (
+              <CardThought thought={thought} key={`Thought-${thought.thoughtId}`} />
+            ))
+          }
+        </div>
       </MainLayout>
 
     </>
