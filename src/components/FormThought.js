@@ -68,10 +68,10 @@ export default function FormThought({ setOpen }) {
       <div className="inline-block relative w-full mt-1">
         <Field component='select' name={field} className="px-3 py-2 focus:outline-none rounded text-primary w-full border-solid border-2 border-sky-900">
           {
-            params.id ? (<option value={emotions.emotionId}>{emotions.emotion}</option>) : <option>Selecciona una emoción</option>
+            params.id ? (<option value={emotions.emotionId}>{emotions.name}</option>) : <option>Selecciona una emoción</option>
           }
           {
-            data.map((item) => (<option value={item.emotionId} key={`emotion-${item.emotionId}`}>{item.emotion}</option>))
+            data.map((item) => (<option value={item.emotionId} key={`emotion-${item.emotionId}`}>{item.name}</option>))
           }
         </Field>
       </div>

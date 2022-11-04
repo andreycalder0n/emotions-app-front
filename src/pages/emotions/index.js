@@ -43,7 +43,7 @@ function Emotions() {
             emotions.map((emotion) => {
               return (
                 <div key={`emotion-${emotion.emotionId}`}>
-                  <h1  >{emotion.emotion}</h1>
+                  <h1  >{emotion.name}</h1>
                 </div>
               )
             })
